@@ -1,6 +1,7 @@
+![GitHub top language](https://img.shields.io/github/languages/top/JoaoSBarbosa/jbInnovateRepair)
+
 # jbInnovateRepair - Sistema Desktop de Gerenciamento de Ordem de Serviço 
 
-![jbInnovateRepair Logo](link_para_imagem_do_logo.png)
 
 ## Visão Geral
 
@@ -37,7 +38,7 @@ O sistema utiliza um banco de dados MySQL com as seguintes tabelas:
 ## Capturas de Tela
 
 ```markdown
-!["Diagrama das Tabelas"](img/DIAGRAMA.png)
+![Diagrama das Tabelas](img/DIAGRAMA.png)
 ```
 
 ## Pré-requisitos e Instalação
