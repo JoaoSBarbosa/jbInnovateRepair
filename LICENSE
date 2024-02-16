@@ -1,0 +1,29 @@
+/*
+ * Copyright (c) João Barbosa
+ *
+ * Este programa é software livre; você pode redistribuí-lo e/ou modificá-lo
+ * sob os termos da Licença Pública Geral GNU, conforme publicada pela Free
+ * Software Foundation; tanto a versão 2 da Licença como qualquer
+ * versão posterior.
+ *
+ * Este programa é distribuído na esperança de que possa ser útil, mas SEM
+ * QUALQUER GARANTIA; sem mesmo a garantia implícita de
+ * COMERCIALIZAÇÃO ou ADEQUAÇÃO A UM PROPÓSITO ESPECÍFICO. Consulte a
+ * Licença Pública Geral GNU para obter mais detalhes.
+ *
+ * Você deve ter recebido uma cópia da Licença Pública Geral GNU
+ * junto com este programa; se não, escreva para a Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ * 02110-1301, EUA.
+ */
+echo "# teste" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:JoaoSBarbosa/jbInnovateRepair.git
+git push -u origin main
+
+git remote add origin git@github.com:JoaoSBarbosa/jbInnovateRepair.git
+git branch -M main
+git push -u origin main

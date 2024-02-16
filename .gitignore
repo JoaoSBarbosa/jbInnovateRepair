@@ -1,0 +1,6 @@
+# Arquivos e pastas do Maven
+target/
+*.class
+
+# Configurações do NetBeans
+nb-configuration.xml
