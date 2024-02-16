@@ -35,11 +35,9 @@ O sistema utiliza um banco de dados MySQL com as seguintes tabelas:
    
    
 
-## Capturas de Tela
+### Diagrama
 
-```markdown
-![Diagrama das Tabelas](img/DIAGRAMA.png)
-```
+![DIAGRAMA](https://github.com/JoaoSBarbosa/jbInnovateRepair/assets/87210017/bc8353d7-c001-47e6-8e4b-0b01a62d0085)
 
 ## Pré-requisitos e Instalação
 
