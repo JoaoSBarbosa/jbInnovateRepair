@@ -7,17 +7,40 @@ package br.com.jbinnovateRepair.telas;
 
 import java.sql.*;
 import br.com.jbinnovateRepair.dao.ModuloConexao;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author João Barbosa
  */
 public class TelaLogin extends javax.swing.JFrame {
-
+    
     Connection conexao = null;
-    PreparedStatement preparedStatement = null;
+    PreparedStatement pst = null;
     ResultSet resultSet = null;
+    
+    public void logar() {
+        String query = "SELECT * FROM tb_usuarios WHERE user_login=? AND user_senha=?";
+        try {
+            pst = conexao.prepareStatement(query);
+            pst.setString(1, userLoginLabel.getText());
+            pst.setString(2, passwordLoginLabel.getText());
 
+            // executando a query
+            resultSet = pst.executeQuery();
+            
+            if (resultSet.next()) {
+                TelaPrincipal principal = new TelaPrincipal();
+                
+                principal.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuário e/ou senha inválido(s)");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
     public TelaLogin() {
         initComponents();
         conexao = ModuloConexao.conector();
@@ -26,10 +49,10 @@ public class TelaLogin extends javax.swing.JFrame {
             loginStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jbinnovateRepair/icones/conectado.png")));
         } else {
             loginStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jbinnovateRepair/icones/desconectado.png")));
-
+            
         }
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -117,7 +140,8 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
+        // chama o método logar
+        logar();
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

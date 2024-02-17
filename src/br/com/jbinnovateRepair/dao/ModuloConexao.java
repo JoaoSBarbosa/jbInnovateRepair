@@ -10,10 +10,11 @@ public class ModuloConexao {
 
     // Connection-> conjuntos funcionalidades do msql
     public static Connection conector() {
-        java.sql.Connection conexao = null;
+        Connection conexao = null;
 
         // chamando driver importado
-        String driver = "com.mysql.jdbc.Driver";
+        String driver = "com.mysql.cj.jdbc.Driver";
+        //String driver = "com.mysql.cj.jdbc.Drive";
 
         // var do banco
         String url = "jdbc:mysql://localhost:3309/db_jbdesk";
