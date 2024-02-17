@@ -11,7 +11,7 @@ nb-configuration.xml
 /nbdist/
 /.nb-gradle/
 /.netbeans/
-
+/nbproject
 # Compiled class file
 *.class
 
