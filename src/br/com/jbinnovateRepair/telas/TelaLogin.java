@@ -22,29 +22,6 @@ public class TelaLogin extends javax.swing.JFrame {
     PreparedStatement pst = null;
     ResultSet resultSet = null;
 
-    public void logar() {
-        String query = "SELECT * FROM tb_usuarios WHERE user_login=? AND user_senha=?";
-        try {
-            pst = conexao.prepareStatement(query);
-            pst.setString(1, userLoginLabel.getText());
-            String passwordSecurity = new String(passwordLoginLabel.getPassword());
-            pst.setString(2, passwordSecurity);
-
-            // executando a query
-            resultSet = pst.executeQuery();
-
-            if (resultSet.next()) {
-                TelaPrincipal principal = new TelaPrincipal();
-
-                principal.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(null, "Usuário e/ou senha inválido(s)");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
-
     public TelaLogin() {
         initComponents();
         setEmptyBorder();
@@ -63,6 +40,30 @@ public class TelaLogin extends javax.swing.JFrame {
 
         userLoginLabel.setBorder(emptyBorder);
         passwordLoginLabel.setBorder(emptyBorder);
+    }
+
+    public void logar() {
+        String query = "SELECT * FROM tb_usuarios WHERE user_login=? AND user_senha=?";
+        try {
+            pst = conexao.prepareStatement(query);
+            pst.setString(1, userLoginLabel.getText());
+            String passwordSecurity = new String(passwordLoginLabel.getPassword());
+            pst.setString(2, passwordSecurity);
+
+            // executando a query
+            resultSet = pst.executeQuery();
+
+            if (resultSet.next()) {
+                TelaPrincipal principal = new TelaPrincipal();
+                principal.setVisible(true);
+                this.dispose();
+                conexao.close();
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuário e/ou senha inválido(s)");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     @SuppressWarnings("unchecked")
