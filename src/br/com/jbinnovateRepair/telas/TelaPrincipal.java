@@ -5,6 +5,12 @@
  */
 package br.com.jbinnovateRepair.telas;
 
+import java.text.DateFormat;
+import java.util.Date;
+import javax.swing.Timer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author João Barbosa
@@ -50,6 +56,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("JB Innovate Repair - Sistema de gerenciamento de Ordens de Serviços");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         DesktopLayout.setPreferredSize(new java.awt.Dimension(640, 480));
 
@@ -167,6 +178,36 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void menReportServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menReportServiceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menReportServiceActionPerformed
+
+    
+    
+
+
+    
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // quando a tela for ativada
+      
+        loggedInUser.setText("Teste");
+        
+         updateDateTime();
+
+        // Agendando uma tarefa para atualizar a hora a cada segundo
+        Timer timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateDateTime();
+            }
+        });
+        timer.start();
+    }//GEN-LAST:event_formWindowActivated
+
+    private void updateDateTime() {
+        Date data = new Date();
+        DateFormat formatoDataHora = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
+        String dataHoraFormatada = formatoDataHora.format(data);
+
+        currentDate.setText(dataHoraFormatada);
+    }
 
     /**
      * @param args the command line arguments
