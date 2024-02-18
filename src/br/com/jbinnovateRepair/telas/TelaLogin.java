@@ -7,31 +7,35 @@ package br.com.jbinnovateRepair.telas;
 
 import java.sql.*;
 import br.com.jbinnovateRepair.dao.ModuloConexao;
+import java.awt.Color;
+import java.awt.Insets;
 import javax.swing.JOptionPane;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
  * @author João Barbosa
  */
 public class TelaLogin extends javax.swing.JFrame {
-    
+
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet resultSet = null;
-    
+
     public void logar() {
         String query = "SELECT * FROM tb_usuarios WHERE user_login=? AND user_senha=?";
         try {
             pst = conexao.prepareStatement(query);
             pst.setString(1, userLoginLabel.getText());
-            pst.setString(2, passwordLoginLabel.getText());
+            String passwordSecurity = new String(passwordLoginLabel.getPassword());
+            pst.setString(2, passwordSecurity);
 
             // executando a query
             resultSet = pst.executeQuery();
-            
+
             if (resultSet.next()) {
                 TelaPrincipal principal = new TelaPrincipal();
-                
+
                 principal.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário e/ou senha inválido(s)");
@@ -40,19 +44,27 @@ public class TelaLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
+
     public TelaLogin() {
         initComponents();
+        setEmptyBorder();
         conexao = ModuloConexao.conector();
         //status da conexão
         if (conexao != null) {
             loginStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jbinnovateRepair/icones/conectado.png")));
         } else {
             loginStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jbinnovateRepair/icones/desconectado.png")));
-            
+
         }
     }
-    
+
+    public final void setEmptyBorder() {
+        EmptyBorder emptyBorder = new EmptyBorder(5, 5, 5, 5);
+
+        userLoginLabel.setBorder(emptyBorder);
+        passwordLoginLabel.setBorder(emptyBorder);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -74,8 +86,26 @@ public class TelaLogin extends javax.swing.JFrame {
         passwordLogin.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         passwordLogin.setText("Senha");
 
+        userLoginLabel.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        userLoginLabel.setForeground(new java.awt.Color(153, 153, 153));
+        userLoginLabel.setText("Insira o usuario...");
         userLoginLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         userLoginLabel.setMinimumSize(new java.awt.Dimension(8, 18));
+        userLoginLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                userLoginLabelMouseClicked(evt);
+            }
+        });
+        userLoginLabel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userLoginLabelActionPerformed(evt);
+            }
+        });
+        userLoginLabel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                userLoginLabelKeyPressed(evt);
+            }
+        });
 
         btnLogin.setBackground(new java.awt.Color(51, 102, 255));
         btnLogin.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -143,6 +173,35 @@ public class TelaLogin extends javax.swing.JFrame {
         // chama o método logar
         logar();
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void userLoginLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userLoginLabelActionPerformed
+
+    }//GEN-LAST:event_userLoginLabelActionPerformed
+
+    private void userLoginLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userLoginLabelMouseClicked
+        // remove texto
+        resetLoginLabel();
+    }//GEN-LAST:event_userLoginLabelMouseClicked
+
+    private void userLoginLabelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userLoginLabelKeyPressed
+        //resetLoginLabel();
+
+        if (userLoginLabel.getText().equals(placeholderText)) {
+            userLoginLabel.setText("");
+            userLoginLabel.setForeground(Color.DARK_GRAY);
+        }
+
+    }//GEN-LAST:event_userLoginLabelKeyPressed
+
+    private final String placeholderText = "Insira o usuario...";
+
+    private void resetLoginLabel() {
+
+        if (userLoginLabel.getText().equals(placeholderText)) {
+            userLoginLabel.setText("");
+            userLoginLabel.setForeground(Color.DARK_GRAY);
+        }
+    }
 
     /**
      * @param args the command line arguments
