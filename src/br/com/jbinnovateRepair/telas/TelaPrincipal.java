@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -126,6 +127,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menHelpAbout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.ALT_MASK));
         menHelpAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jbinnovateRepair/icones/sobre.png"))); // NOI18N
         menHelpAbout.setText("Sobre");
+        menHelpAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menHelpAboutActionPerformed(evt);
+            }
+        });
         menHelp.add(menHelpAbout);
 
         MenuBar.add(menHelp);
@@ -135,6 +141,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menOptionsExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
         menOptionsExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jbinnovateRepair/icones/sair.png"))); // NOI18N
         menOptionsExit.setText("Sair");
+        menOptionsExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menOptionsExitActionPerformed(evt);
+            }
+        });
         menOptions.add(menOptionsExit);
 
         MenuBar.add(menOptions);
@@ -179,17 +190,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menReportServiceActionPerformed
 
-    
-    
 
-
-    
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // quando a tela for ativada
-      
+
         loggedInUser.setText("Teste");
-        
-         updateDateTime();
+
+        updateDateTime();
 
         // Agendando uma tarefa para atualizar a hora a cada segundo
         Timer timer = new Timer(1000, new ActionListener() {
@@ -200,6 +207,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         timer.start();
     }//GEN-LAST:event_formWindowActivated
+
+    private void menOptionsExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menOptionsExitActionPerformed
+        int sair = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair?", "Atenção", JOptionPane.YES_NO_OPTION);
+        if (sair == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_menOptionsExitActionPerformed
+
+    private void menHelpAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menHelpAboutActionPerformed
+        TelaSobre telaSobre = new TelaSobre();
+        telaSobre.setVisible(true);
+    }//GEN-LAST:event_menHelpAboutActionPerformed
 
     private void updateDateTime() {
         Date data = new Date();
