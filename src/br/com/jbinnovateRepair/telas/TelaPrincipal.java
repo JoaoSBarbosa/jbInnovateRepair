@@ -69,7 +69,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         DesktopLayout.setLayout(DesktopLayoutLayout);
         DesktopLayoutLayout.setHorizontalGroup(
             DesktopLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 836, Short.MAX_VALUE)
+            .addGap(0, 827, Short.MAX_VALUE)
         );
         DesktopLayoutLayout.setVerticalGroup(
             DesktopLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,11 +104,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menCadUser.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK));
         menCadUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jbinnovateRepair/icones/suporte_24.png"))); // NOI18N
         menCadUser.setText("Usuários");
+        menCadUser.setEnabled(false);
         menCad.add(menCadUser);
 
         MenuBar.add(menCad);
 
         menReport.setText("Relatório");
+        menReport.setEnabled(false);
 
         menReportService.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
         menReportService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/jbinnovateRepair/icones/relatorio.png"))); // NOI18N
@@ -158,12 +160,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(DesktopLayout, javax.swing.GroupLayout.DEFAULT_SIZE, 836, Short.MAX_VALUE)
+                .addComponent(DesktopLayout, javax.swing.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(currentDate)
                     .addComponent(loggedInUser)
-                    .addComponent(logo, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))
+                    .addComponent(logo, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -178,7 +180,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGap(142, 142, 142)
                         .addComponent(logo, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                         .addGap(0, 185, Short.MAX_VALUE))
-                    .addComponent(DesktopLayout, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE))
+                    .addComponent(DesktopLayout, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -273,12 +275,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menCad;
     private javax.swing.JMenuItem menCadClient;
     private javax.swing.JMenuItem menCadOs;
-    private javax.swing.JMenuItem menCadUser;
+    public static javax.swing.JMenuItem menCadUser;
     private javax.swing.JMenu menHelp;
     private javax.swing.JMenuItem menHelpAbout;
     private javax.swing.JMenu menOptions;
     private javax.swing.JMenuItem menOptionsExit;
-    private javax.swing.JMenu menReport;
+    public static javax.swing.JMenu menReport;
     private javax.swing.JMenuItem menReportService;
     // End of variables declaration//GEN-END:variables
 }
